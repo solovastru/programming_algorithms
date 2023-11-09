@@ -37,8 +37,6 @@ def prompt_integer(message: str)->int:
             print("Please enter a valid number")
             user_input = input(message)
 
-message_input = prompt_integer("Enter a number: ")
-
 
 def prompt_user_for_location(name: str) -> tuple[int, int]:
     row = prompt_integer(f"Row of {name}: ")
@@ -81,20 +79,17 @@ def bfs(lab: list[str], start: tuple[int, int], end: tuple[int, int]) -> list[tu
                 if is_traversable(lab, next_move) and next_move not in visited:
                     q.append(path + [next_move])
 
-                for row, line in enumerate(labyrinth):
+               
+
+start_location = prompt_user_for_location("start")
+end_location = prompt_user_for_location("end")
+path = bfs(labyrinth, start_location, end_location)
+
+ for row, line in enumerate(labyrinth):
                     for location in path:
                         if location[0] == row and labyrinth[row][location[1]] == " ":
                             labyrinth[row] = replace_at_index(labyrinth[row], "X", location[1])
 
 
-
-
-
-
-
-
-start_location = prompt_user_for_location("start")
-end_location = prompt_user_for_location("end")
-path = bfs(labyrinth, start_location, end_location)
 print(print_labyrinth(labyrinth, path))
 print(path)
