@@ -1,10 +1,4 @@
 
-from google.colab import drive
-drive.mount('/content/drive')
-
-import sys
-sys.path.append('/content/drive/My Drive/my_folder')
-
 import requests
 import json
 from porter_stemmer import PorterStemmer
